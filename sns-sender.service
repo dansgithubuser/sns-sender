@@ -1,0 +1,13 @@
+[Unit]
+Description=SNS Sender
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=60
+Environment=SNS_SENDER_AWS_ACCESS_KEY_ID="{aws_access_key_id}"
+Environment=SNS_SENDER_AWS_SECRET_ACCESS_KEY="{aws_secret_access_key}"
+ExecStart={python3} -u {sender}
+
+[Install]
+WantedBy=multi-user.target
